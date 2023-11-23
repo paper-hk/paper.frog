@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
 
+# Since the last commit, we split [game.py] into different
+# modules. We therefore have to import from different modules.
+#
+# XXX This suggests that this [test_game.py] script should 
+# itself be refactored.
+
 import sys
 
-from game import F, T, E, board, init, peek, swap, frogstep, toadstep
+from constants import F, T, E, START
+from core import board, init, peek, swap
+from game import frogstep, toadstep
 
 
 START = [F,F,E,E,E,T,T]

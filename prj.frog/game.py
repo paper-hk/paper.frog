@@ -1,52 +1,38 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
+"""Game Logic
+
+Implement game logic. 
+
+Functions here should change the board only on ways that are
+legal according to the game rules.
+
+Pedagogically, the teacher should first introduce the student
+to the development of [frogstep()], culminating in a working
+[frogstep()] function. The student should use this as a model
+to develop a working [toadstep()] function. 
+
+Both functions take an index value [i]. The teacher should
+show the student that the end user does not need to see two
+stepping functions.  We can provide the user with a single
+[step()] function which will take take the same [i] index
+from the user, look at the kind of piece sitting at that
+index, and *delegate* the stepping responsibilities to 
+the appropriate stepping function.
+
+The functions [frogstep()] and [toadstep()] are necessary,
+but should be considered part of the game infrastructure
+rather than part of the user interface.
+
+This points to splitting game logic functions into 
+different modules.
+"""
+
 import sys
 
-from constants import F,T,E,START
-
-
-def board():
-    try: 
-        # If we have a current board, return it
-        return sys._THEFROGBOARD
-    except AttributeError:
-        # The board was not created yet. Call init to create a new one.
-        init()
-        return sys._THEFROGBOARD
-
-
-def init():
-    """Initialize the board.
-    We piggyback on the builtin sys module. 
-    """
-    # reset the board
-    sys._THEFROGBOARD = START.copy()
-
-
-def peek(i):
-    """Peek at a board position.. 
-    Like B[i], but return None if [i] is out of range.
-    """
-    B=board()
-    try:
-        return B[i]
-    except IndexError:
-        # This will 'catch' the error.
-        return None
-
-
-def swap(i,j):
-    """Swap the pieces at [i] and [j] if possible.
-
-    Possible here means programatically possible. Game rules are not
-    inforced by this function.
-    """
-    B=board()
-    try:
-        B[i], B[j] = B[j], B[i]
-    except IndexError:
-        pass
+from constants import F,T,E
+from core import board, peek, swap
 
 
 def frogstep(i):
@@ -94,14 +80,4 @@ def step(i):
     else:
         print( 'Cannot Move' )
     print(board())
-
-
-def frogjump(ii):
-    #
-    # Can you write the code?
-    #
-    if (peek(ii), peek(ii+2)) in [ (F,T), (T,F) ] :
-        swap (ii,ii+2)
-    else:
-        print( "Cannot move" )
 
