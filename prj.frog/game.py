@@ -3,9 +3,8 @@
 
 import sys
 
-F = 'frog' # Frog piece
-T = 'toad' # Toad piece
-E = '----' # Empty space
+from constants import F,T,E,START
+
 
 def board():
     try: 
@@ -22,7 +21,7 @@ def init():
     We piggyback on the builtin sys module. 
     """
     # reset the board
-    sys._THEFROGBOARD = [F,F,E,E,E,T,T]
+    sys._THEFROGBOARD = START.copy()
 
 
 def peek(i):
