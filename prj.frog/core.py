@@ -9,7 +9,7 @@ respect to game logic.
 
 import sys
 
-from constants import START #F,T,E,START
+from constants import START 
 
 
 def board():
