@@ -1,0 +1,38 @@
+Pedagogy regarding game.py
+
+1. frogstep()
+
+    The student should be familiar with index accessing.  We assume
+    that [i] represents a frog that can step.  We first check that
+    it is a frog. We then check that it can step. This involves to
+    peeks. 
+
+    if (peek(i), peek(i+1)) == (F,E):
+        swap(i,i+1)
+
+
+2. toadstep()
+
+    The secondary school student should then be able to come up with
+    this on there own:
+
+    if (peek(i), peek(i-1)) == (T,E):
+        swap(i,i-1)
+
+3. step()
+
+    * UI Simplification.
+    * Delegator pattern
+    * Even Game logic can be factored.
+    * Infrastructure is at every level.
+    * the [elif] control structure
+ 
+    Have student see that the enduser with an [i] in mind does
+    not need to see two functions.
+    
+    if peek(i) == F: frogstep(i)
+    elif peek(i) == T: toadstep(i)
+    else: print( 'Cannot Move' )
+    print(board())
+
+commit ff990a9d64b54a53169f27ed1d6631ab85d4f66b
