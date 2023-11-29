@@ -7,7 +7,7 @@ from workon import *
 #    init()
 #    board()[2]=T
 #    assert board() == [F,F,T,E,E,T,T]
-#    frogjump()
+#    frogjump(1)
 #    assert board() == [F,E,T,F,E,T,T]
 
 
@@ -29,7 +29,7 @@ def test_toadstep():
 
 def test_peek():
     init()
-    assert board() == START
+    assert board() == [F,F,E,E,E,T,T]
     assert peek(0) == F
     assert peek(2) == E
     assert peek(6) == T
@@ -45,6 +45,14 @@ def test_swap():
     swap(1,5)
     assert board() == [F,'world',E,E,E,'hello',T]
 
+
+def test_init():
+    init()
+    assert board() == [F,F,E,E,E,T,T]
+    board()[0] = 42
+    assert board() == [42,F,E,E,E,T,T]
+    init()
+    assert board() == [F,F,E,E,E,T,T]
 
 def test_named():
     init()
