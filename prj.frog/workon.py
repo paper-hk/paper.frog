@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-"""Cpde that the student is working on.
+#
+# Code for the student to work on.
+#
 
-"""
 def frogjump(ii):
     #
     # To the student: can you write code to support

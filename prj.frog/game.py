@@ -1,14 +1,29 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-"""Game Logic
+import sys
 
-Functions here should change the board only on ways that are
-legal according to the game rules.
-"""
+###############################################################
+# Game Logic
+#
+# Functions here should change the board only in ways that are
+# legal according to the game rules.
+###############################################################
 
-from constants import F,T,E
-from core import board, peek, swap
+def step(i):
+    """Have the player piece at [i] take one step if possible.
+
+    Pedagogy:
+    We do not check for an empty space.  The called steper function
+    will check for us.
+    """
+    if peek(i) == F:
+        frogstep(i)
+    elif peek(i) == T:
+        toadstep(i)
+    else:
+        print( 'Cannot Move' )
+    print(board())
 
 
 def frogstep(i):
@@ -29,18 +44,65 @@ def toadstep(i):
         print( "Cannot move" )
 
 
-def step(i):
-    """Have the player piece at [i] take one step if possible.
+###############################################################
+# Board Logic
+#
+# These functions support board inspection and piece swapping
+# without the client having to worry about IndexError.  There
+# is no game logic here.
+###############################################################
 
-    Pedagogy:
-    We do not check for an empty space.  The called steper function
-    will check for us.
+def peek(i):
+    """Peek at a board position.. 
+    Like B[i], but return None if [i] is out of range.
     """
-    if peek(i) == F:
-        frogstep(i)
-    elif peek(i) == T:
-        toadstep(i)
-    else:
-        print( 'Cannot Move' )
-    print(board())
+    B=board()
+    try:
+        return B[i]
+    except IndexError:
+        # This will 'catch' the error.
+        return None
+
+def swap(i,j):
+    """Swap the pieces at [i] and [j] if possible.
+
+    Possible here means programatically possible. Game rules are not
+    inforced by this function.
+    """
+    B=board()
+    try:
+        B[i], B[j] = B[j], B[i]
+    except IndexError:
+        pass
+
+#########################################################################
+# Board Creation.
+#
+# These functions provide a board to play with.
+#########################################################################
+
+def board(new=False):
+    """Return the current board, optionally resetting it to new.
+    """
+    if new == True or not hasattr(sys, '__BOARD'):
+        sys.__BOARD = START.copy()
+    return sys.__BOARD
+
+def init():
+    """A convenience function to reset the board."""
+    board(new=True)
+
+
+
+
+
+#########################################################################
+#  Constants: The pieces and starting position.
+#########################################################################
+
+F = 'frog' # Frog piece
+T = 'toad' # Toad piece
+E = '----' # Empty space
+START = [F,F,E,E,E,T,T]
+
 
