@@ -27,7 +27,10 @@ pip install -r ./requirements.txt
 
 #------------------------------------------------------------------
 # One of the packages is [pytest].  Run it to test our frog game.
+# But first, set [$PYTHONDONTWRITEBYTECODE] to avoid cluttering
+# the directory with an ugly __pycache__ folder.
 
+export PYTHONDONTWRITEBYTECODE=1
 pytest
 
 #------------------------------------------------------------------
