@@ -3,12 +3,20 @@
 from game import *
 from workon import *
 
-#def test_frogjump():
-#    init()
-#    board()[2]=T
-#    assert board() == [F,F,T,E,E,T,T]
-#    frogjump(1)
-#    assert board() == [F,E,T,F,E,T,T]
+
+def test_frogjump_no_jumping_empty():
+    init()
+    assert board() == [F,F,E,E,E,T,T]
+    frogjump(1)
+    assert board() == [F,F,E,E,E,T,T]
+
+
+def test_frogjump():
+    init()
+    board()[2]=T
+    assert board() == [F,F,T,E,E,T,T]
+    frogjump(1)
+    assert board() == [F,E,T,F,E,T,T]
 
 
 def test_frogstep():
