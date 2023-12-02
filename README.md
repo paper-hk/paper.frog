@@ -4,15 +4,17 @@ The goal of this project is to develop programming skills
 by implementing the game of Frog.  The game is explained
 in the file [Frog.md]. 
 
-Currently there is support for piece stepping moves, but
-not jumping moves. Once code is written and tested for
-jumping moves, we will have reached the first milestone:
-A program that will let the user actually solve a puzzle.
+Development first takes place in an interactive python3
+shell, e.g. ipython3. Development should meet these
+milestones:
 
-After that, the tentative milestones for the project is
-that the program should:
-    1. Recognize a winning state and congratulate the user.
-    2. Be runnable on its own, without ipython.
+    1. Support board creation and initialization.
+    2. Support peek and swap functions.
+    3. Support game logic to allow user to solve puzzle.
+    4. Recognize a winning state and congratulate the user.
+
+Subsequent milestones might be:
+    2. Support run on its own, without ipython.
     4. Support the undoing of moves.
     3. Be colorful.
 
